@@ -95,6 +95,9 @@ img {
   display: flex;
   align-items: center;
 }
+.site-nav .item {
+  position: relative;
+}
 .site-nav .item:not(:last-child) {
   margin-right: 50px;
 }
@@ -111,6 +114,16 @@ img {
 }
 .site-nav .link.current {
   color: var(--accent-color);
+}
+.site-nav .link.current::after {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  background-color: var(--accent-color);
+  border-radius: 2px;
 }
 .site-nav .link:hover,
 .site-nav .link:focus {
@@ -157,6 +170,7 @@ img {
 }
 /* Hero */
 .hero {
+  position: relative;
   text-align: center;
   max-width: 1600px;
   height: 600px;
@@ -171,6 +185,12 @@ img {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+}
+.hero-actions {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .hero-title {
   margin-top: 0;
@@ -271,12 +291,28 @@ img {
   justify-content: space-between;
 }
 .work .item {
+  position: relative;
   width: 370px;
 }
-.work h3 {
+.work .title {
+  position: absolute;
+  width: 370px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 0);
+
   margin-top: 0;
+  margin-bottom: 0;
   text-align: center;
+
+  background: rgba(47, 48, 58, 0.8);
 }
+
 /* Button */
 .button {
   display: inline-block;
@@ -455,6 +491,40 @@ img {
 }
 .portfolio .link {
   text-decoration: none;
+}
+.thumb {
+  position: relative;
+}
+.thumb::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background: rgba(33, 150, 243, 0.9);
+}
+.description {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 0;
+  margin-bottom: 0;
+  opacity: 0;
+
+  width: 322px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: 0.03em;
+
+  color: var(--primary-bg-color);
+}
+.portfolio > .element:hover .thumb::before,
+.portfolio > .element:focus .thumb::before,
+.portfolio > .element:hover .description,
+.portfolio > .element:focus .description {
+  opacity: 1;
 }
 .project-title {
   padding: 24px 20px;
